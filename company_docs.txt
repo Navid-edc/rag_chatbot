@@ -1,0 +1,14 @@
+[Document 1: Annual Leave and Time-Off Policy]
+At Data Pardazan Bonyan Ava (DBA), full-time employees are entitled to 26 days of paid annual leave per calendar year. A maximum of 9 unused leave days can be carried over to the following year. All leave requests must be submitted through the C# BPMS internal portal at least 48 hours in advance and approved by the team lead. Emergency sick leave requires a medical certificate if it exceeds 3 consecutive working days.
+
+[Document 2: Remote Work and Hybrid Schedule]
+The Software Engineering and AI teams operate on a hybrid work model. After successfully completing a 3-month probation period, engineers may work remotely up to 2 days per week (specifically Mondays and Wednesdays). Core availability hours during remote work are from 10:00 AM to 4:00 PM Tehran time. Attendance in the office is mandatory on Saturdays for sprint planning meetings.
+
+[Document 3: IT Security and Database Access Guidelines]
+All production database credentials (SQL Server and PostgreSQL), internal REST API tokens, and LLM keys must be stored strictly in local environment variables (.env) and never hardcoded or committed to Git repositories. Accessing the production SQL database requires connecting through the company VPN and using role-based access control (RBAC). Two-factor authentication (2FA) via an offline authenticator app is mandatory for GitHub and Slack.
+
+[Document 4: AI Engineering & Local LLM Deployment Standards]
+To minimize cloud inference costs and protect sensitive customer data, the AI team utilizes open-weight models via Ollama for internal tools. For production RAG pipelines, engineers must enable Flash Attention and 8-bit KV cache quantization (q8_0) to optimize memory utilization and reduce response latency. Embedding generation is performed locally using Hugging Face sentence-transformers, and retrieved chunks must pass through a cross-encoder reranking stage before prompt injection.
+
+[Document 5: Code Review and Deployment Workflow]
+Every new feature or bug fix must be developed in a dedicated Git branch and submitted via Pull Request (PR). At least one senior developer must review the code, checking for clean architecture, English comments, and unit test coverage before merging into the main branch. All microservices and FastAPI applications are containerized using Docker before deployment to staging servers.
