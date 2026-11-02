@@ -6,3 +6,4 @@ chroma_db/
 .DS_Store
 reranker_cache/
 reranker_cache/
+fastapi.log
