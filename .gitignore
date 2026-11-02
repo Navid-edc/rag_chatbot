@@ -5,3 +5,4 @@ chroma_db/
 *.pyc
 .DS_Store
 reranker_cache/
+reranker_cache/
