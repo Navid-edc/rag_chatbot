@@ -7,3 +7,4 @@ chroma_db/
 reranker_cache/
 reranker_cache/
 fastapi.log
+company_data.db
