@@ -1,0 +1,16 @@
+# 1. Start our FastAPI server (app.py) in the background on port 8000
+uvicorn app:app --host 127.0.0.1 --port 8000 > fastapi.log 2>&1 &
+
+# 2. Wait 4 seconds for FastAPI to load the embedding and reranker models into RAM
+sleep 4
+
+# 3. Send a real HTTP GET request to check server health
+echo "=== 1. Testing GET /health endpoint ==="
+curl -s http://127.0.0.1:8000/health
+echo -e "\n"
+
+# 4. Send a real HTTP POST request with a JSON payload to /api/v1/chat
+echo "=== 2. Testing POST /api/v1/chat endpoint ==="
+curl -s -X POST "http://127.0.0.1:8000/api/v1/chat" \
+     -H "Content-Type: application/json" \
+     -d '{"question": "What are the IT security rules for SQL database credentials and 2FA?"}' | python -m json.tool
